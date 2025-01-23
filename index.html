@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed - Future Edition</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Typing Speed Tracker ⚡</h1>
+            <p>Unleash your inner speedster and conquer the keyboard!</p>
+        </header>
+
+        <main>
+            <section class="prompt-section">
+                <h2> Type the Text Below:</h2>
+                <blockquote>
+                    "{{ prompt }}"
+                </blockquote>
+            </section>
+
+            <form method="POST" class="typing-form">
+                <textarea name="typed_text" placeholder="Type here like a pro..." rows="5" required></textarea>
+                <input type="hidden" name="start_time" value="{{ start_time }}">
+                <button type="submit">⚡ Let's Go! ⚡</button>
+            </form>
+
+            {% if result %}
+            <section class="result-section">
+                <h2>🚀 Your Results 🚀</h2>
+                <div class="result-box">
+                    <p><strong>⏱️ Time Taken:</strong> {{ result.time }} seconds</p>
+                    <p><strong>⚡ Typing Speed:</strong> {{ result.speed }} words per minute</p>
+                    <p><strong>❌ Errors:</strong> {{ result.errors }}</p>
+                </div>
+                <p class="encouragement">
+                    {{ "💎 You’re on fire! Incredible performance." if result.errors == 0 else "🔥 Keep grinding, you're unstoppable!" }}
+                </p>
+            </section>
+            {% endif %}
+        </main>
+    </div>
+
+    <footer>
+        <p><h2>⚡ Designed by Aditya Kashid ⚡</h2></p>
+    </footer>
+</body>
+</html>
